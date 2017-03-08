@@ -12,4 +12,4 @@ Install compiling the code for the latest official release of Essentia
 brew install essentia
 ```
 
-2. Run `./src/featureExtractor.py`
+2. Run [featureExtractor.py](/src/featureExtractor.py)
