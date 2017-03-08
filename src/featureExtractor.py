@@ -1,25 +1,42 @@
+# Gets all audio files in the root directory and outputs .json files with analysis data
+
 import essentia
 from essentia.standard import *
-import datetime
+from pprint import pprint
+import glob
 
- # Load audio
-fileName1 = 'A_ball_bounce_arcady_1.wav'
-fileName2 = 'maxPatchRecording.wav'
+# Get all file names with extension
+fileExtension = '.wav'
+fileNames = glob.glob('./*' + fileExtension)
 
-# Load files using equal loudness loader
-loader1 = EqloudLoader(filename = fileName1)
-loader2 = EqloudLoader(filename = fileName2)
+# Load them
+loadedAudioFiles = []
 
-audio1 = loader1()
-audio2 = loader2()
+for fileName in fileNames:
+	# Using audio loader of choice http://essentia.upf.edu/documentation/algorithms_overview.html#audio-input-output
+	loader = EqloudLoader(filename = fileName)
+	loadedAudioFiles.append(loader())
 
-# Extract a bunch of descriptors
+
+dataPools = []
+dataPoolsAggregated = []
 extractor = Extractor()
-extractedData1 = extractor(audio1)
-extractedData2 = extractor(audio2)
 
-# dateTimeNow = datetime.datetime.now().strftime("%Y-%m-%d_%H:%M:%S")
+# Extract a bunch of features http://essentia.upf.edu/documentation/reference/std_Extractor.html
+for audioFile in loadedAudioFiles:
+	currentExtractor = extractor(audioFile)
+	dataPools.append(currentExtractor)
 
-# Write them to JSON files with a suitable name
-YamlOutput(filename = fileName1.replace('.wav', '') + '_analysis.json', format = 'json')(extractedData1)
-YamlOutput(filename = fileName2.replace('.wav', '') + '_analysis.json', format = 'json')(extractedData2)
+	# Perform statistical aggregation http://essentia.upf.edu/documentation/reference/std_PoolAggregator.html
+	# TODO add 'stdev' to defaultStats, currently getting error https://github.com/MTG/essentia/issues/570
+	# A low standard deviation indicates that the data points tend to be close to the mean value
+	dataPoolsAggregated.append(PoolAggregator(defaultStats = ["mean", "min", "max", "median"])(currentExtractor))
+
+
+# Output JSON
+for index, dataPool in enumerate(dataPools):
+	YamlOutput(filename = fileNames[index].replace('.wav', '') + '_analysis.json', format = 'json')(dataPool)
+
+# Output aggregated JSON (mean values)
+for index, aggregatedPool in enumerate(dataPoolsAggregated):
+	YamlOutput(filename = fileNames[index].replace('.wav', '') + '_aggregated_analysis.json', format = 'json')(aggregatedPool)
