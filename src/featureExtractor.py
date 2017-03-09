@@ -30,7 +30,7 @@ for audioFile in loadedAudioFiles:
 	# Perform statistical aggregation http://essentia.upf.edu/documentation/reference/std_PoolAggregator.html
 	# TODO add 'stdev' to defaultStats, currently getting error https://github.com/MTG/essentia/issues/570
 	# A low standard deviation indicates that the data points tend to be close to the mean value
-	dataPoolsAggregated.append(PoolAggregator(defaultStats = ["mean", "min", "max", "median", "stdev"])(currentExtractor))
+	dataPoolsAggregated.append(PoolAggregator(defaultStats = ["mean", "min", "max", "median"])(currentExtractor))
 
 
 # Output JSON
