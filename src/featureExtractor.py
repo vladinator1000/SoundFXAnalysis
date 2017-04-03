@@ -1,20 +1,26 @@
-# Gets all audio files in the root directory and outputs .json files with analysis data
-
-import essentia
+import essentia, os, errno
 from essentia.standard import *
 from pprint import pprint
-import glob
 
-# Get all file names with extension
+
+fileNames = []
+filePaths = []
 fileExtension = '.wav'
-fileNames = glob.glob('./*' + fileExtension)
 
-# Load them
+# Get the audio directory path
+audioDirectoryPath = os.path.dirname(os.path.realpath(__file__)) + '/../audio/'
+
+# Get the names and paths of all .wav files in the audio folder
+for file in os.listdir(audioDirectoryPath):
+	if file.endswith(fileExtension):
+		fileNames.append(file)
+		filePaths.append(os.path.join(audioDirectoryPath, file))
+
+# Load them with equal loudness
 loadedAudioFiles = []
-
-for fileName in fileNames:
+for filePath in filePaths:
 	# Using audio loader of choice http://essentia.upf.edu/documentation/algorithms_overview.html#audio-input-output
-	loader = EqloudLoader(filename = fileName)
+	loader = EqloudLoader(filename = filePath)
 	loadedAudioFiles.append(loader())
 
 
@@ -33,10 +39,24 @@ for audioFile in loadedAudioFiles:
 	dataPoolsAggregated.append(PoolAggregator(defaultStats = ["mean", "min", "max", "median"])(currentExtractor))
 
 
+
+# Create results directory if necessary
+resultsDirectoryPath = os.path.dirname(os.path.realpath(__file__)) + '/../analysisResults/'
+
+try:
+	os.makedirs(resultsDirectoryPath)
+except OSError as exception:
+	if exception.errno != errno.EEXIST:
+		raise
+
+# Map file names to result names using anonymous function
+resultNames = map(lambda name: name.replace(fileExtension, '') + '_analysis.json', fileNames)
+resultNamesAggregated = map(lambda name: name.replace(fileExtension, '') + '_analysis_aggregated.json', fileNames)
+
 # Output JSON
 for index, dataPool in enumerate(dataPools):
-	YamlOutput(filename = fileNames[index].replace('.wav', '') + '_analysis.json', format = 'json')(dataPool)
+	YamlOutput(filename = resultsDirectoryPath + resultNames[index], format = 'json')(dataPool)
 
 # Output aggregated JSON (mean values)
 for index, aggregatedPool in enumerate(dataPoolsAggregated):
-	YamlOutput(filename = fileNames[index].replace('.wav', '') + '_aggregated_analysis.json', format = 'json')(aggregatedPool)
+	YamlOutput(filename = resultsDirectoryPath + resultNamesAggregated[index], format = 'json')(aggregatedPool)
