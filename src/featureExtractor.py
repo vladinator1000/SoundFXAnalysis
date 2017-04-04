@@ -27,7 +27,7 @@ for filePath in filePaths:
 dataPools = []
 dataPoolsAggregated = []
 extractor = Extractor()
-
+#
 # Extract a bunch of features http://essentia.upf.edu/documentation/reference/std_Extractor.html
 for audioFile in loadedAudioFiles:
 	currentExtractor = extractor(audioFile)

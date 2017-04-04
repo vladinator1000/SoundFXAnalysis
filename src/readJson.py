@@ -1,35 +1,83 @@
-import json, os
+import json, os, numpy
+
 from pprint import pprint
 
+# Compare pairs of sounds, each pair must have an A and B sample
+fileNamesA = []
+filePathsA = []
+aggregateFileNamesA = []
+aggregateFilePathsA = []
 
-fileNames = []
-filePaths = []
-aggregateFileNames = []
-aggregateFilePaths = []
+fileNamesB = []
+filePathsB = []
+aggregateFileNamesB = []
+aggregateFilePathsB = []
 
 # Get the names and paths of all files in the results folder
 resultsDirectoryPath = os.path.dirname(os.path.realpath(__file__)) + '/../analysisResults/'
 
 for file in os.listdir(resultsDirectoryPath):
 	if file.endswith('.json'):
-		if 'aggregate' in file:
-			aggregateFileNames.append(file)
-			aggregateFilePaths.append(os.path.join(resultsDirectoryPath, file))
-		else:
-			fileNames.append(file)
-			filePaths.append(os.path.join(resultsDirectoryPath, file))
+		if 'A' in file:
+			if 'aggregate' in file:
+				aggregateFileNamesA.append(file)
+				aggregateFilePathsA.append(os.path.join(resultsDirectoryPath, file))
+			else:
+				fileNamesA.append(file)
+				filePathsA.append(os.path.join(resultsDirectoryPath, file))
+
+		if 'B' in file:
+			if 'aggregate' in file:
+				aggregateFileNamesB.append(file)
+				aggregateFilePathsB.append(os.path.join(resultsDirectoryPath, file))
+			else:
+				fileNamesB.append(file)
+				filePathsB.append(os.path.join(resultsDirectoryPath, file))
 
 
-dataSets = []
-aggregatedDataSets = []
 
-for path in filePaths:
+dataSetsA = []
+aggregateDataSetsA = []
+
+dataSetsB = []
+aggregateDataSetsB = []
+
+for path in filePathsA:
 	with open(path) as openedJson:
-		dataSets.append(json.load(openedJson))
+		dataSetsA.append(json.load(openedJson))
 
-for path in aggregatedFilePaths:
+for path in aggregateFilePathsA:
 	with open(path) as openedJson:
-		aggregatedDataSets.append(json.load(openedJson))
+		aggregateDataSetsA.append(json.load(openedJson))
+
+for path in filePathsB:
+	with open(path) as openedJson:
+		dataSetsB.append(json.load(openedJson))
+
+for path in aggregateFilePathsB:
+	with open(path) as openedJson:
+		aggregateDataSetsB.append(json.load(openedJson))
+
+
+
+# Only use SFX descriptors
+sfxDescriptorSetsA = []
+sfxDescriptorSetsB = []
+results = []
+
+for dict in dataSetsA:
+	sfxDescriptorSetsA.append(dict['sfx'])
+
+for dict in dataSetsB:
+	sfxDescriptorSetsB.append(dict['sfx'])
+
+for index, dict in enumerate(sfxDescriptorSetsA):
+	for (tupleA, tupleB) in zip(sfxDescriptorSetsA[index].iteritems(), sfxDescriptorSetsB[index].iteritems()):
+		print tupleA, tupleB
+
+
+
+
 
 
 # Flatten an dictionary recursively (retun only furthest nodes)
@@ -43,18 +91,3 @@ def flatten(dictionary, accumulator = [], excludeKeys = []):
 			# print '{0} : {1}'.format(key, value)
 
 	return accumulator;
-
-
-# Flatten the tree and load it into an array for all data sets
-flatDataSets = []
-for set in dataSets:
-	flatDataSets.append([flatten(set, excludeKeys = ['essentia'])])
-
-flatAggregatedDataSets = []
-for aggregatedSet in aggregatedDataSets:
-	flatAggregatedDataSets.append([flatten(aggregatedSet, excludeKeys = ['essentia'])])
-
-
-for set in flatDataSets:
-	for key in set:
-		pprint(key)
