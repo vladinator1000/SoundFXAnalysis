@@ -35,7 +35,6 @@ for file in os.listdir(resultsDirectoryPath):
 				filePathsB.append(os.path.join(resultsDirectoryPath, file))
 
 
-
 dataSetsA = []
 aggregateDataSetsA = []
 
