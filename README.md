@@ -1,5 +1,5 @@
 # SoundFXAnalysis
-Analyzing game sound effects with the Essentia library in Python 2.7. Only works on Mac OS
+Compares two sets of sound effects samples with the [Essentia](http://essentia.upf.edu/documentation/) library in Python 2.7. Only works on Mac OS
 
 ## Setup Guide
 
