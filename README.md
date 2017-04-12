@@ -16,12 +16,12 @@ Install compiling the code for the latest official release of Essentia
 brew install essentia
 ```
 
-### Add audio files
-2. Place two sets of `.aif` audio files in the audio folder, each file from first group containing `A_` and from the second `B_` in their name
+### 2. Add audio files
+Place two sets of `.aif` audio files in the audio folder, each file from first group containing `A_` and from the second `B_` in their name
 `A_1` and `B_1`, `A_2` and `B_2` etc. will be considered pairs. If you want another format, edit the file extension in `./src/analyseAudioFiles`.
 
-### Run the scripts
-3. Cd to the project directory and run this shell script
+### 3. Run the scripts
+Cd to the project directory and run this shell script
 ```
 sh runThis.sh
 ```
