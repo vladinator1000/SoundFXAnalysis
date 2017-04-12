@@ -1,5 +1,5 @@
 # SoundFXAnalysis
-Analyzing game sound effects with the Essentia library in Python. Only works on Mac OS
+Analyzing game sound effects with the Essentia library in Python 2.7. Only works on Mac OS
 
 ## Setup Guide
 
@@ -25,3 +25,7 @@ brew install essentia
 ```
 sh runThis.sh
 ```
+
+
+
+Samples A_ were made with the granular HonoursMaxPatch, samples B_ were made in a DAW with the Serum synth.
