@@ -45,7 +45,7 @@ def plotDictionary(descriptorSet, title = ''):
 	plt.title(title)
 
 	return figure
-#
+
 def plotList(listOfNumbers, title = ''):
 	figure = plt.figure()
 	colors = list("rgbcmyk")
@@ -59,10 +59,21 @@ def plotList(listOfNumbers, title = ''):
 	return figure
 
 
-# Open a PDF file
+
 pdfName = 'euclidianDistancePlots.pdf'
-pdfPath = resultsDirectoryPath + pdfName
-pdf = PdfPages(pdfPath)
+plotsPath = resultsDirectoryPath + 'plots/'
+
+# Make directory for plots if needed
+try:
+	os.makedirs(plotsPath)
+except OSError as exception:
+	if exception.errno != errno.EEXIST:
+		raise
+
+# Open a PDF file
+pdf = PdfPages(plotsPath + pdfName)
+
+
 
 print 'Plotting in PDF in ./analysisResults...\n'
 for descriptorName in descriptors:
@@ -70,10 +81,24 @@ for descriptorName in descriptors:
 	setType = type(descriptorSet[0])
 
 	if setType is dict:
-		pdf.savefig(plotDictionary(descriptorSet, title = descriptorName + ' distances'))
+		fig = plotDictionary(descriptorSet, title = descriptorName + ' distances')
+
+		# Save to PNG
+		fig.savefig(plotsPath + descriptorName + '.png')
+
+		# Save to PDF
+		pdf.savefig(fig)
+
+
 
 	elif setType is float:
-		pdf.savefig(plotList(descriptorSet, title = descriptorName + ' distances'))
+		fig = plotList(descriptorSet, title = descriptorName + ' distances')
+
+		# Save PNG
+		fig.savefig(plotsPath + descriptorName + '.png')
+
+		# Save PDF
+		pdf.savefig(fig)
 
 pdf.close()
 print 'Done.\n\n'
