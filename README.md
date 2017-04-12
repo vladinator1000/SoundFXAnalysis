@@ -1,7 +1,9 @@
 # SoundFXAnalysis
 Analyzing game sound effects with the Essentia library in Python. Only works on Mac OS
 
-Open up the Terminal and run the following commands:
+## Setup Guide
+
+If you don't have Homebrew installed:
 0. Go here https://brew.sh/ and install Homebrew
 
 1. Install essentia:
@@ -15,7 +17,11 @@ Install compiling the code for the latest official release of Essentia
 brew install essentia
 ```
 
-2. Run [startHere.py](/src/startHere.py) in the terminal, (cd to the SounfFXAnalysis/src first)
+
+2. Place two sets of files in the audio folder, each file from first group containing `A_` and from the second `B_` in their name
+`A_1` and `B_1`, `A_2` and `B_2` etc. will be considered pairs
+
+3. Cd to the project directory and run this shell script
 ```
-python startHere.py
+sh runThis.sh
 ```

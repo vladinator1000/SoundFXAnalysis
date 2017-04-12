@@ -1,11 +1,10 @@
 import essentia, os, errno
 from essentia.standard import *
-from pprint import pprint
 
 
 fileNames = []
 filePaths = []
-fileExtension = '.wav'
+fileExtension = '.aif'
 
 # Get the audio directory path
 audioDirectoryPath = os.path.dirname(os.path.realpath(__file__)) + '/../audio/'
@@ -29,6 +28,7 @@ dataPoolsAggregated = []
 extractor = Extractor()
 #
 # Extract a bunch of features http://essentia.upf.edu/documentation/reference/std_Extractor.html
+print '\nAnalysing audio files...\n'
 for audioFile in loadedAudioFiles:
 	currentExtractor = extractor(audioFile)
 	dataPools.append(currentExtractor)
