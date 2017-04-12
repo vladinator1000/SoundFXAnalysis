@@ -18,8 +18,8 @@ brew install essentia
 ```
 
 
-2. Place two sets of files in the audio folder, each file from first group containing `A_` and from the second `B_` in their name
-`A_1` and `B_1`, `A_2` and `B_2` etc. will be considered pairs
+2. Place two sets of `.aif` audio files in the audio folder, each file from first group containing `A_` and from the second `B_` in their name
+`A_1` and `B_1`, `A_2` and `B_2` etc. will be considered pairs. If you want another format, edit the file extension in `./src/analyseAudioFiles`.
 
 3. Cd to the project directory and run this shell script
 ```
