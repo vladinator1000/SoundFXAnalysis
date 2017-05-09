@@ -1,0 +1,122 @@
+[
+    {
+        "inharmonicity": {
+            "max": 0.055734336376000004, 
+            "mean": 0.01149341464039999, 
+            "median": 0.0349814463407, 
+            "min": 0.00152490241453
+        }, 
+        "oddtoevenharmonicenergyratio": {
+            "max": 24.51521635051, 
+            "mean": 0.2923291325620001, 
+            "median": 0.11690095067000003, 
+            "min": 0.028887918219
+        }, 
+        "pitch_after_max_to_before_max_energy_ratio": 0.30642648241094067, 
+        "pitch_centroid": 0.30642648241094067, 
+        "pitch_max_to_total": 0.01149341464039999, 
+        "pitch_min_to_total": 0.30642648241094067, 
+        "tristimulus": {
+            "max": 0.21501250017652915, 
+            "mean": 0.30642648241094067, 
+            "median": 0.22823802230109247, 
+            "min": 0.0817585140467
+        }
+    }, 
+    {
+        "inharmonicity": {
+            "max": 0.18742239475300002, 
+            "mean": 0.07881588302550001, 
+            "median": 0.058245042339000005, 
+            "min": 2.16654734684e-05
+        }, 
+        "oddtoevenharmonicenergyratio": {
+            "max": 0.59787893295, 
+            "mean": 0.45135524868899995, 
+            "median": 0.6324744001031001, 
+            "min": 0.00022416224238000016
+        }, 
+        "pitch_after_max_to_before_max_energy_ratio": 0.497972080142969, 
+        "pitch_centroid": 0.497972080142969, 
+        "pitch_max_to_total": 0.07881588302550001, 
+        "pitch_min_to_total": 0.497972080142969, 
+        "tristimulus": {
+            "max": 0.7753160394871129, 
+            "mean": 0.497972080142969, 
+            "median": 0.5038273500817018, 
+            "min": 0.0535239641116051
+        }
+    }, 
+    {
+        "inharmonicity": {
+            "max": 0.044796854256999974, 
+            "mean": 0.0445462763306, 
+            "median": 0.03654798865319999, 
+            "min": 0.00648727279622
+        }, 
+        "oddtoevenharmonicenergyratio": {
+            "max": 7.0731267929, 
+            "mean": 0.04469579458299999, 
+            "median": 0.30634516477600005, 
+            "min": 0.0006862282753000021
+        }, 
+        "pitch_after_max_to_before_max_energy_ratio": 0.14444879287833542, 
+        "pitch_centroid": 0.14444879287833542, 
+        "pitch_max_to_total": 0.0445462763306, 
+        "pitch_min_to_total": 0.14444879287833542, 
+        "tristimulus": {
+            "max": 0.19008635272396984, 
+            "mean": 0.14444879287833542, 
+            "median": 0.20761451930848857, 
+            "min": 0.11694793813579397
+        }
+    }, 
+    {
+        "inharmonicity": {
+            "max": 0.08724582195300001, 
+            "mean": 0.008732739835899998, 
+            "median": 0.00012428418267500002, 
+            "min": 2.6887009881e-06
+        }, 
+        "oddtoevenharmonicenergyratio": {
+            "max": 28.5909156799, 
+            "mean": 1.906256616111, 
+            "median": 0.0071489093825500005, 
+            "min": 0.00021631540312238
+        }, 
+        "pitch_after_max_to_before_max_energy_ratio": 0.0518528398702875, 
+        "pitch_centroid": 0.0518528398702875, 
+        "pitch_max_to_total": 0.008732739835899998, 
+        "pitch_min_to_total": 0.0518528398702875, 
+        "tristimulus": {
+            "max": 0.25064288958196296, 
+            "mean": 0.0518528398702875, 
+            "median": 0.03895789558948405, 
+            "min": 0.002731430798009034
+        }
+    }, 
+    {
+        "inharmonicity": {
+            "max": 0.10479310154899996, 
+            "mean": 0.0370651185508, 
+            "median": 0.027381345629699995, 
+            "min": 0.0022821968887
+        }, 
+        "oddtoevenharmonicenergyratio": {
+            "max": 1.6554811000899998, 
+            "mean": 0.024339854718000042, 
+            "median": 0.22978883981700005, 
+            "min": 0.0255604535341
+        }, 
+        "pitch_after_max_to_before_max_energy_ratio": 0.0856751918574367, 
+        "pitch_centroid": 0.0856751918574367, 
+        "pitch_max_to_total": 0.0370651185508, 
+        "pitch_min_to_total": 0.0856751918574367, 
+        "tristimulus": {
+            "max": 0.38609682641737414, 
+            "mean": 0.0856751918574367, 
+            "median": 0.16149065019036368, 
+            "min": 0.0
+        }
+    }
+]
