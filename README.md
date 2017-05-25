@@ -26,6 +26,4 @@ Cd to the project directory and run this shell script
 sh runThis.sh
 ```
 ### 4. Look at results in `./analysisResults`
-
-
-Samples A_ were made with the granular HonoursMaxPatch, samples B_ were made in a DAW with the Serum synth.
+You will see data sets with extractor information and a plot folder with distances between each pair for each descriptor.
