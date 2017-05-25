@@ -1,6 +1,8 @@
 # SoundFXAnalysis
 Compares two sets of sound effects samples with the [Essentia](http://essentia.upf.edu/documentation/) library in Python 2.7. Only works on Mac OS
 
+Thesis: https://www.academia.edu/33058454/Bridging_the_Gap_Between_Procedural_and_Hand-Made_Sound_Effects
+
 ## Setup Guide
 
 If you don't have Homebrew installed, go here https://brew.sh/ and install it.
